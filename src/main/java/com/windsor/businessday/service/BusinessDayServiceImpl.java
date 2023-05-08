@@ -9,7 +9,10 @@ import java.util.Date;
 import java.util.List;
 
 import org.json.JSONException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.windsor.businessday.dao.BusinessDayDao;
@@ -17,10 +20,12 @@ import com.windsor.businessday.entity.CurrencyList;
 import com.windsor.businessday.entity.HolidayTable;
 import com.windsor.businessday.entity.Results;
 import com.windsor.businessday.entity.ResultsParam;
-import com.windsor.businessday.exception.CurrencyNotFoundException;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class BusinessDayServiceImpl implements BusinessDayService {
+
+    private final static Logger log = LoggerFactory.getLogger(BusinessDayServiceImpl.class);
 
     @Autowired
     private BusinessDayDao businessDayDao;
@@ -45,7 +50,8 @@ public class BusinessDayServiceImpl implements BusinessDayService {
         int index = getCurrencyIndex(year, currency);
 
         if (index == -1) {
-            throw new CurrencyNotFoundException(currency);
+            log.warn("Currency not found : {}", currency);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
 
         HolidayTable holidayTable = businessDayDao.getHolidaysTable(year, currency, index);

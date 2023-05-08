@@ -1,45 +1,40 @@
 package com.windsor.businessday.exception;
 
-import java.io.FileNotFoundException;
-
-import java.text.ParseException;
 import org.json.JSONException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import java.io.FileNotFoundException;
+import java.text.ParseException;
+
 @ControllerAdvice
 public class BusinessDayExceptionHandler {
 
-    @ExceptionHandler(CurrencyNotFoundException.class)
-    public ResponseEntity<String> handler(CurrencyNotFoundException e) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body(e.getMessage());
-    }
+    private final static Logger log = LoggerFactory.getLogger(BusinessDayExceptionHandler.class);
 
     @ExceptionHandler(FileNotFoundException.class)
-    public ResponseEntity<String> handler(FileNotFoundException e) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body("The file cannot be found, please confirm that the year is entered correctly.\n\n"
-                        + e.getMessage());
+    public ResponseEntity<?> handler(FileNotFoundException e) {
+        log.warn("The file cannot be found, please confirm that the year is entered correctly.");
+        log.warn(e.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
     @ExceptionHandler(JSONException.class)
-    public ResponseEntity<String> handler(JSONException e) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(e.getMessage());
+    public ResponseEntity<?> handler(JSONException e) {
+        return internalServerError(e);
     }
 
     @ExceptionHandler(ParseException.class)
-    public ResponseEntity<String> handler(ParseException e) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(e.getMessage());
+    public ResponseEntity<?> handler(ParseException e) {
+        return internalServerError(e);
     }
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<String> handler(Exception e) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(e.getMessage());
+    private ResponseEntity<?> internalServerError(Exception e) {
+        log.warn(e.getMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 }
