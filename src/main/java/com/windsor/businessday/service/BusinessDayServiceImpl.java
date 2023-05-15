@@ -34,7 +34,7 @@ public class BusinessDayServiceImpl implements BusinessDayService {
         return businessDayDao.getCurrencyList(year);
     }
 
-    public int getCurrencyIndex(String year, String currency) throws JSONException, FileNotFoundException {
+    private int getCurrencyIndex(String year, String currency) throws JSONException, FileNotFoundException {
 
         CurrencyList currencyList = businessDayDao.getCurrencyList(year);
         List<String> list = currencyList.getCurrencyList();

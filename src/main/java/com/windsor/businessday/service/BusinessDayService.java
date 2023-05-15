@@ -12,7 +12,5 @@ public interface BusinessDayService {
 
     CurrencyList getCurrencyList(String year) throws JSONException, FileNotFoundException;
 
-    int getCurrencyIndex(String year, String currency) throws JSONException, FileNotFoundException;
-
     Results getResults(String year, String currency) throws JSONException, FileNotFoundException, ParseException;
 }
