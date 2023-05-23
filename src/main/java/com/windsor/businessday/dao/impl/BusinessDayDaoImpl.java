@@ -1,10 +1,11 @@
-package com.windsor.businessday.dao;
+package com.windsor.businessday.dao.impl;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.windsor.businessday.dao.BusinessDayDao;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
