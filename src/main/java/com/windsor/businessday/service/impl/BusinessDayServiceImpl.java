@@ -1,4 +1,4 @@
-package com.windsor.businessday.service;
+package com.windsor.businessday.service.impl;
 
 import java.io.FileNotFoundException;
 import java.text.ParseException;
@@ -8,6 +8,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import com.windsor.businessday.service.BusinessDayService;
 import org.json.JSONException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,7 +52,7 @@ public class BusinessDayServiceImpl implements BusinessDayService {
 
         if (index == -1) {
             log.warn("Currency not found : {}", currency);
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
 
         HolidayTable holidayTable = businessDayDao.getHolidaysTable(year, currency, index);
