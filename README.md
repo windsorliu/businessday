@@ -7,6 +7,9 @@
 
 * Spring Boot: 2.3.7.RELEASE
 * Java JDK 11
+* Spring Boot Validation
+* org.json
+* Lombok
 
 ## API
 
@@ -24,6 +27,7 @@ GET:  localhost:8080\businessday\{year}
 e.g.  想要取得2018年的所有貨幣代碼<br>
 `\businessday\2018`
 <br>
+<br>
 ![demo video](https://github.com/windsorliu/businessday/blob/main/images/getCurrencyList.gif)
 *Demo video*
 <br>
@@ -37,14 +41,15 @@ GET:  localhost:8080\businessday?year=yyyy&currency=xxx
 e.g.  想要取得2016年貨幣代碼為TWD的營業日資訊<br>
 `\businessday?year=2016&currency=twd`
 <br>
+<br>
 ![demo video](https://github.com/windsorliu/businessday/blob/main/images/getResults.gif)
 *Demo video*
-<br>
 <br>
 <br>
 如果要取得多個貨幣在多個年份的營業日資訊，請用 "," 區隔開參數<br>
 e.g.  想要取得2016,2019年貨幣代碼為TWD,USD的營業日資訊<br>
 `\businessday?year=2016,2019&currency=twd,usd`
+<br>
 <br>
 ![demo video](https://github.com/windsorliu/businessday/blob/main/images/getMultipleResults.gif)
 *Demo video*
@@ -71,9 +76,9 @@ e.g.  想要取得2016,2019年貨幣代碼為TWD,USD的營業日資訊<br>
 
 錯誤訊息依序分為兩類：
 * 找不到檔案(年份輸入錯誤)
-* 找不到幣別
+* 找不到幣別<br><br>
 
->備註：因為來源檔案目前只有2016年至2020年，若年份不在這個區間則被視為**年份輸入錯誤**
-<br>
 ![demo video](https://github.com/windsorliu/businessday/blob/main/images/exception.gif)
 *Demo video*
+<br>
+>備註：因為來源檔案目前只有2016年至2020年，若年份不在這個區間則被視為**年份輸入錯誤**
