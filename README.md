@@ -29,7 +29,7 @@ e.g.  想要取得2018年的所有貨幣代碼<br>
 <br>
 <br>
 ![demo video](https://github.com/windsorliu/businessday/blob/main/images/getCurrencyList.gif)
-*Demo video*
+[Demo video](https://github.com/windsorliu/businessday/blob/main/images/getCurrencyList.gif)
 <br>
 <br>
 <br>
@@ -43,7 +43,7 @@ e.g.  想要取得2016年貨幣代碼為TWD的營業日資訊<br>
 <br>
 <br>
 ![demo video](https://github.com/windsorliu/businessday/blob/main/images/getResults.gif)
-*Demo video*
+[Demo video](https://github.com/windsorliu/businessday/blob/main/images/getResults.gif)
 <br>
 <br>
 如果要取得多個貨幣在多個年份的營業日資訊，請用 "," 區隔開參數<br>
@@ -52,7 +52,7 @@ e.g.  想要取得2016,2019年貨幣代碼為TWD,USD的營業日資訊<br>
 <br>
 <br>
 ![demo video](https://github.com/windsorliu/businessday/blob/main/images/getMultipleResults.gif)
-*Demo video*
+[Demo video](https://github.com/windsorliu/businessday/blob/main/images/getMultipleResults.gif)
 <br>
 
 ## 資料
@@ -79,6 +79,6 @@ e.g.  想要取得2016,2019年貨幣代碼為TWD,USD的營業日資訊<br>
 * 找不到幣別<br><br>
 
 ![demo video](https://github.com/windsorliu/businessday/blob/main/images/exception.gif)
-*Demo video*
+[Demo video](https://github.com/windsorliu/businessday/blob/main/images/exception.gif)
 <br>
 >備註：因為來源檔案目前只有2016年至2020年，若年份不在這個區間則被視為**年份輸入錯誤**
