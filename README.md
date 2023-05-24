@@ -23,7 +23,7 @@ GET:  localhost:8080\businessday\{year}
 ```
 e.g.  想要取得2018年的所有貨幣代碼<br>
 `\businessday\2018`
-![demo video](https://github.com/windsorliu/businessday/images/getCurrencyList.gif)
+![demo video](https://github.com/windsorliu/businessday/blob/main/images/getCurrencyList.gif)
 *Demo video*
 <br>
 <br>
